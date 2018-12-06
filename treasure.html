@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Treasure Chest</title>
+        <style>
+        #apple-tree {
+            color: rgb(82, 102, 0);
+        }
+        button {
+            font-size: 15px;
+        }
+            #logo {
+                margin: 6px;
+                padding: 6px;
+                border: groove rgb(242, 203, 48);
+                color: rgb(242, 203, 48);
+                background-color: rgb(120, 84, 41);
+            }
+            #num {
+                color: rgb(173, 98, 7);
+                font-weight: bold;
+            }
+            #num2 {
+                color: rgb(171, 9, 74);
+                font-weight: bold;
+            }
+            #goal {
+                color: rgb(128, 99, 24);
+                background-color: rgb(232, 216, 116);
+                border: double rgb(195, 204, 75);
+                font-size: 17px;
+                margin-top: 3px;
+                margin-left: 6px;
+                margin-right: 6px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h1 id="logo">Treasure Chest</h1>
+        <h4 id="goal">Goal: Get the crown<span id="complete"></span></h4>
+        <p style="font-size: 20px; margin-left: 10px; margin-top: 25px;">You have <span id="num">0</span> gold. You have <span id="num2">0</span> gems.</p> <br> <p style="font-size: 20px; margin-left: 10px; margin-top: -32px;">You have <span id="num3" style="color: rgb(10, 171, 91); font-weight: bold;">0</span> shards. You have <span id="num4" style="color: rgb(186, 79, 34); font-weight: bold;">0</span> golden apples</p> <p style="font-size: 20px; margin-left: 10px; margin-top: -10px;">You have <span id="num5" style="color: rgb(125, 191, 10); font-weight: bold;">0</span> crystals. You have <span id="num6" style="color: rgb(84, 98, 176); font-weight: bold;">0</span> diamonds.</p>
+        <p style="font-size: 20px; margin-left: 10px; margin-top: 25px; color: rgb(173, 98, 7); font-weight: bold;">Get gold.</p>
+        <button id="click" style="margin-left: 18px;">Gold</button>
+        <p style="font-size: 20px; margin-left: 10px; margin-top: 25px; color: rgb(171, 9, 74); font-weight: bold;">Buy a gem for 20 gold.</p>
+        <button id="gem"style="margin-left: 18px;">Gem</button>
+        <p style="font-size: 20px; margin-left: 10px; margin-top: 25px; color: rgb(10, 171, 91); font-weight: bold;">Buy a shard for 8 gems.</p>
+        <button id="shard"style="margin-left: 18px;">Shard</button>
+        <p id="apple-text"style=" font-size: 19px;color: rgb(186, 79, 34); font-weight: bold; margin-left: 10px;">Buy the golden apple tree for 5 shards.</p>
+        <span id="apple-tree">
+        <p style="margin-left: 20px; font-size: 23px;">o 0 O</p><br>
+        <p style="margin-top: -50px; margin-left: 30px; font-size: 22px;">\ | /</p><br>
+        <p style="margin-top: -46px; margin-left: 31px; font-size: 22px;">_|_</p><br>
+        </span>
+        <button id="Apple" style="margin-left: 12px;">Golden Apple Tree</button>
+        <p id="robot-text"style="font-size: 19px;color: rgb(102, 51, 102); font-weight: bold; margin-left: 10px;">Buy the robot for 200 golden apples.</p>
+        <p style="margin-top: 0px; margin-left: 30px; font-size: 22px;">['-' ]</p><br>
+        <p style="margin-top: -50px; margin-left: 23px; font-size: 22px;">|"__"| </p><br>
+         <p style="margin-top: -50px; margin-left: 22px; font-size: 22px;">"[ <span style="color: rgb(255, 255, 255);">-</span> ]"</p><br>
+          <p style="margin-top: -61px; margin-left: 39px; font-size: 22px;"></p><br>
+          <button id="robot-magic"style="margin-left: 12px;">Robot</button>
+          <p style="color: rgb(125, 191, 10); font-weight: bold; font-size: 19px; margin-left: 10px;">Buy a Crystal for 100 golden apples.</p>
+          <button id="crystal-button" style="margin-left: 12px;">Crystal</button>
+          <p style="color: rgb(84, 98, 176); font-weight: bold; font-size: 19px; margin-left: 10px;">Buy a diamond for 30 crystals.</p>
+          <button id="diamond-button" style="margin-left: 12px;">Diamond</button>
+          <p id="crownText"style="color: rgb(230, 192, 39); font-weight: bold; font-size: 19px; margin-left: 10px;">Buy the crown for 4 diamonds.</p>
+          <button id="crown-button" style="margin-left: 12px;">Crown</button>
+        
+    </body>
+        <script>
+            var g = 0;
+            var gem = 0;
+            var shard = 0;
+            var apple = 0;
+            var crystal = 0;
+            var diamond = 0;
+            
+            var crownButton = document.getElementById("crown-button");
+            var diamondButton = document.getElementById("diamond-button");
+            var getGold = document.getElementById("click");
+            var getShard = document.getElementById("shard");
+            var getApple = document.getElementById("Apple");
+            var roboButton = document.getElementById("robot-magic");
+            var crystalButton = document.getElementById("crystal-button");
+            var getGem = document.getElementById("gem");
+            var addGold = function() {
+                g = g + 1;
+                document.getElementById("num").textContent = g;
+            }
+            var addGem = function() {
+                if (g > 19) {
+                    g = g - 20;
+                    gem = gem + 1;
+                    document.getElementById("num").textContent = g;
+                    document.getElementById("num2").textContent = gem;
+                }
+            }
+            var addShard = function() {
+                if (gem > 7) {
+                    gem = gem - 8;
+                    shard = shard + 1;
+                    document.getElementById("num2").textContent = gem;
+                    document.getElementById("num3").textContent = shard;
+                }
+            }
+            var addAppleTree = function() {
+                if (shard > 4 && Apple.textContent === "Golden Apple Tree") {
+                    shard = shard - 5;
+                    document.getElementById("num3").textContent = shard;
+                    document.getElementById("Apple").textContent = "Golden Apple";
+                    document.getElementById("apple-text").textContent = "Get a golden apple.";
+                }
+                if (Apple.textContent === "Golden Apple") {
+                    apple = apple + 1;
+                    document.getElementById("num4").textContent = apple
+                }
+            }
+            var getRobot = function() {
+                if (apple > 199 && roboButton.textContent === "Robot") {
+                    apple = apple - 200;
+                    document.getElementById("num4").textContent = apple
+                    roboButton.textContent = "Use Robot";
+                    document.getElementById("robot-text").textContent = "Trade 50 gold for 60 golden apples!"
+                }
+                if (g > 49 && roboButton.textContent === "Use Robot") {
+                    apple = apple + 60;
+                    document.getElementById("num4").textContent = apple
+                    g = g - 50;
+                    document.getElementById("num").textContent = g
+                }
+            }
+            
+            var getACrystal = function() {
+                if (apple > 99) {
+                    apple = apple - 100;
+                    document.getElementById("num4").textContent = apple
+                    crystal = crystal + 1;
+                    document.getElementById("num5").textContent = crystal
+                }
+            }
+            var getADiamond = function() {
+                if (crystal > 29) {
+                    crystal = crystal - 30;
+                    document.getElementById("num5").textContent = crystal
+                    diamond = diamond + 1;
+                    document.getElementById("num6").textContent = diamond
+                }
+            }
+            var getTheCrown = function() {
+                if (diamond > 3 && crownButton.textContent === "Crown") {
+                    diamond = diamond - 4;
+                    document.getElementById("num6").textContent = diamond
+                    document.getElementById("complete").textContent = " (You have the crown!)";
+                    crownButton.textContent = "O__O"
+                    document.getElementById("crownText").textContent = "=-=-=-=-=-=-=-=-=-=";
+                }
+            }
+            getGold.addEventListener("click", addGold);
+            getGem.addEventListener("click", addGem);
+            getShard.addEventListener("click", addShard);
+            getApple.addEventListener("click", addAppleTree);
+            roboButton.addEventListener("click", getRobot);
+            crystalButton.addEventListener("click", getACrystal);
+            diamondButton.addEventListener("click", getADiamond);
+            crownButton.addEventListener("click", getTheCrown);
+        </script>
+</html>
